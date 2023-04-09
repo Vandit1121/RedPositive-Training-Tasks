@@ -1,8 +1,14 @@
 import React from 'react';
 import ExpenseItem from './components/Expenses/ExpenseItem';
 import Card from './components/UI/Card';
+import NewExpense from './components/NewExpense/NewExpense';
 
 const App = () => {
+
+  const addExpenseHandler = expense =>{
+    console.log("In app.js");
+    console.log(expense);
+  }
 
   const expenses = [
     { id: 'e1', title: 'Toilet Paper', amount: '$94.12', date: new Date(2020, 7, 14) },
@@ -13,7 +19,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h2>Let's get started!</h2>
+    <NewExpense onAddExpense={addExpenseHandler} />
       <Card className='expenses'>
         {expenses.map((expense) => { return <ExpenseItem title={expense.title} amount={expense.amount} date={expense.date} /> })}
       </Card>
